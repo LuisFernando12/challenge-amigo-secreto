@@ -1,21 +1,24 @@
-//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
-const friendList = [];
-const inputName = document.querySelector('#amigo');
-const labelInputName = document.querySelector('label');
-const list = document.querySelector('#listaAmigos');
-const secretFriend = document.querySelector('#resultado');
+import { Alert } from "./js/alert.js";
 
+//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
+function $(element){
+    return document.querySelector(element);
+}
+const friendList = [];
+const listFriendsAlreadyDrawn = [];
+const inputName = $('#amigo');
+const list = $('#listaAmigos');
+const secretFriend = $('#resultado');
+$('.button-add').addEventListener('click', addFriend);
+$('.button-draw').addEventListener('click', drawFriend);
 inputName.addEventListener('input', (event) => {
     if (event.target.value.length > 0) {
         inputName.classList.remove('input-name-error');
-        labelInputName.classList.add('hidden');
-        labelInputName.innerText = '';
     }
 })
 function showError(text) {
     inputName.classList.add('input-name-error');
-    labelInputName.classList.remove('hidden');
-    labelInputName.innerText = text;
+    Alert(text);
     inputName.value = '';
 }
 function addFriend() {
@@ -44,9 +47,21 @@ function incrementListFriendsInHtml() {
 }
 function drawFriend() {
     if (friendList.length === 0) {
+        Alert('A lista de amigos está vazia !', true);
         return
+    }
+    if(friendList.length === listFriendsAlreadyDrawn.length){
+        friendList.length = 0;
+        listFriendsAlreadyDrawn.length = 0;
+        secretFriend.innerHTML = ''
+        return Alert('Todos os amigos já foram sorteados !');
     }
     const number = Math.floor(Math.random() * friendList.length);
     list.innerHTML = '';
-    secretFriend.innerText = `O amigo secreto sorteado foi: ${friendList[number]} !`;
+    const friendDrawn = friendList[number];
+    if(listFriendsAlreadyDrawn.includes(friendDrawn)){
+        return drawFriend();
+    }
+    listFriendsAlreadyDrawn.push(friendDrawn);
+    secretFriend.innerText = `O amigo secreto sorteado foi: ${friendDrawn} !`;
 }

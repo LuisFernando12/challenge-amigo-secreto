@@ -92,15 +92,6 @@ body {
     border: 2px solid var(--color-error);
     outline: none!important;
 }
-.hidden{
-    display: none;
-}
-.label-input-name-error{
-    color: var(--color-error);
-    font-size: 1rem;
-    text-align: start;
-
-}
 
 .button-container {
     width: 300px;
