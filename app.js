@@ -43,6 +43,9 @@ function incrementListFriendsInHtml() {
     })
 }
 function drawFriend() {
+    if (friendList.length === 0) {
+        return
+    }
     const number = Math.floor(Math.random() * friendList.length);
     list.innerHTML = '';
     secretFriend.innerText = `O amigo secreto sorteado foi: ${friendList[number]} !`;
