@@ -26,3 +26,7 @@ Este projeto foi desenvolvido como parte de um **desafio do programa ONE (Oracle
 
 2. Abra o arquivo **index.html** no navegador de sua preferência:
     - Não é necessário configurar nenhum servidor ou ambiente adicional.
+
+## Link do projeto hospedado no github pages  
+
+ acesse aqui o projeto: https://luisfernando12.github.io/challenge-amigo-secreto/
